@@ -94,6 +94,7 @@ FastMatchTemplate( const Mat&      source,
     cv::Size smallTargetSize = copyOfTarget.size();
     cv::Size smallSourceSize = copyOfSource.size();
 
+    // After consideration this is right beacuse the bargin should be cut 
     cv::Size resultSize;
     resultSize.width = smallSourceSize.width - smallTargetSize.width + 1;
     resultSize.height = smallSourceSize.height - smallTargetSize.height + 1;
@@ -113,6 +114,7 @@ FastMatchTemplate( const Mat&      source,
     for(int currMax = 0; currMax < numMaxima; currMax++)
     {
         // transform the point to its corresponding point in the larger image
+        // this is right considering the template moving in the window 
         locations[currMax].x *= (int)pow(2.0f, numDownPyrs);
         locations[currMax].y *= (int)pow(2.0f, numDownPyrs);
         locations[currMax].x += targetSize.width / 2;
